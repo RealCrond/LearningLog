@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset=""utf-8>
-    <title>菜鸟教程(runoob.com)</title>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
 </head>
-
 <body>
-    <form action="search-post" method="post">
+    <form action="/search-post" method="post">
         {% csrf_token %}
         <input type="text" name="q">
         <input type="submit" value="Submit">
@@ -14,5 +13,4 @@
 
     <p>{{ rlt }}</p>
 </body>
-
 </html>

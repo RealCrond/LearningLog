@@ -9,6 +9,5 @@ urlpatterns = [
     url(r'^index$', views.index),
     url(r'^topics/$', views.topics, name='topics'),
     url(r'^topics/(?P<topic_id>\d+)/$', views.topic, name='topic'),
-    url(r'^search$',search.search,name='search'),
     url(r'^search-post$',search.search_post,name='search_post'),
 ]
