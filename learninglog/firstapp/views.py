@@ -25,7 +25,7 @@ def login_post(request):
         print("生成userID:%d"%globalparams.g_nUserID)
         return render(request, 'index.html')
     else:
-        ctx['rlt'] = '校验失败!'
+        ctx['rlt'] = '登录失败!'
         print("\n校验失败:","\n用户名：", info['rlt1'], "\n密码:", info['rlt2'])
         print("生成userID:%d" % globalparams.g_nUserID)
         return render(request, 'login.html', ctx )
