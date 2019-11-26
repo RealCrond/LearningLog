@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>科达终端控制台(kedacom.com)</title>
+    <style>
+        .divForm{
+            position: absolute;/*绝对定位*/
+            width: 300px;
+            height: 100px;
+
+            border: 1px solid gray;
+            text-align: center;/*(让div中的内容居中)*/
+            top: 50%;
+            left: 50%;
+            margin-top: -200px;
+            margin-left: -150px;
+        }
+    </style>
+</head>
+
+<body>
+    <center><h1>视讯终端产品部办公平台</h1></center>
+    <div class="divForm">
+        <form action="/login-post" method="post">
+            <table>
+                <tr>
+                    <td><label for="username">用户名</label></td>
+                    <td><input type="text" name="username"></td>
+                </tr>
+                <tr>
+                    <td><label for="passwd">密码</label></td></td>
+                    <td><input type="password" name="passwd"></td>
+                </tr>
+                <tr>
+                    {% csrf_token %}
+                    <td style="text-align:left;"><a href="/redmine/account/lost_password">忘记密码</a></td>
+                    <td style="text-align:right;"><input type="submit" value="login>>"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <center><h4>{{ rlt }}</h4></center>
+</body>
+</html>

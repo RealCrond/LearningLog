@@ -1,13 +1,34 @@
 from django.shortcuts import render
+from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from .models import Topic
+from django.views.decorators import csrf
+
+import random
+
+from . import globalparams
 
 # Create your views here.
-def main(request):
-    return HttpResponse('Main')
-
 def login(request):
-    return HttpResponse('Hello World!')
+    globalparams.g_nUserID = 0
+    return render(request,'login.html')
+
+def login_post(request):
+    ctx = {}
+    info = {'rlt1':'UserName','rlt2':'PassWord'}
+    if request.POST:
+        info['rlt1'] = request.POST['username']
+        info['rlt2'] = request.POST['passwd']
+    if info['rlt1'] == 'Herman' and info['rlt2'] == 'liuhuan':
+        ctx['rlt'] = '校验成功!'
+        globalparams.g_nUserID = random.randint(10000,19999)
+        print("生成userID:%d"%globalparams.g_nUserID)
+        return render(request, 'index.html')
+    else:
+        ctx['rlt'] = '校验失败!'
+        print("\n校验失败:","\n用户名：", info['rlt1'], "\n密码:", info['rlt2'])
+        print("生成userID:%d" % globalparams.g_nUserID)
+        return render(request, 'login.html', ctx )
 
 def base(request):
     return render(request, 'base.html')
